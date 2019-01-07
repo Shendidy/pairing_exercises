@@ -10,25 +10,19 @@ class Scrabble
           }
 
   def initialize(word, index = 1, times = 1)
-    word = "" if word == nil
+    word == nil ? word = "" : word
     @word = word.upcase.split("")
     @times = times
     @index = index
+    @sum = 0
   end
 
   def score
-    sum = 0
-    @word.each_with_index do |letter, idx|
-      @@points.each do |key, value|
-        if value.include?(letter)
-          if idx == @index
-            sum += (key * @times)
-          else
-            sum += key
-          end
-        end
+    @word.each_with_index do |ltr, idx|
+      @@points.each do |k, v|
+        v.include?(ltr) ? idx == @index ? @sum += (k * @times) : @sum += k : 0
       end
     end
-    return sum
+    return @sum
   end
 end

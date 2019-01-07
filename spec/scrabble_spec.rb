@@ -51,5 +51,11 @@ RSpec.describe Scrabble do
 
       expect(scrabble.score).to eq 41
     end
+
+    it 'scores a double letter word' do
+      scrabble = Scrabble.new('OXYPHENBUTAZONE', 2, 2)
+
+      expect(scrabble.score).to eq 45
+    end
   end
 end
